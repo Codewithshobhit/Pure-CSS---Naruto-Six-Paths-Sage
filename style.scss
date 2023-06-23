@@ -1,0 +1,1177 @@
+// utils
+@mixin box($w, $h) {
+  height: $h;
+  width: $w;
+}
+@mixin pse($w, $h, $c: "") {
+  height: $h;
+  width: $w;
+  content: $c;
+  position: absolute;
+}
+@mixin patl($t, $l) {
+  position: absolute;
+  top: $t;
+  left: $l;
+}
+@mixin patr($t, $r) {
+  position: absolute;
+  top: $t;
+  right: $r;
+}
+@mixin pabl($b, $l) {
+  position: absolute;
+  bottom: $b;
+  left: $l;
+}
+@mixin pabr($b, $r) {
+  position: absolute;
+  bottom: $b;
+  right: $r;
+}
+
+//colors:
+
+$skin: #f9e6ce;
+$skin-shadow: #d7c9b3;
+$gray: #373736;
+$black: #000;
+$blue: #86B9E4;
+$yellow: #f4f095;
+$orange: #f39637;
+$border: #e9cf74;
+
+//base styles
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+}
+*:focus {
+  outline: none;
+}
+
+//background
+body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(at bottom center, #fff1 10%, transparent 60%),
+    linear-gradient(90deg, #0004 10%, #fff2 40% 60%, #0004 90%);
+  background-color: #4e3126;
+}
+//Naruto six paths sage
+.container {
+  @include box(600px, 533px);
+  position: relative;
+  & .ball {
+    @include box(75px, 75px);
+    @include patl(52px, 83px);
+    border-radius: 50%;
+    animation: fly 2s ease-in-out infinite alternate;
+    background: 
+      radial-gradient(at 30% 30%, #6662 20%, #0000),
+      radial-gradient(at 30% 30%, #4443 70%, #0000),
+      radial-gradient(black 60%, #fff 100%);
+    &:nth-child(2) {
+      top: 293px;
+      left: 0;
+    }
+    &:nth-child(3) {
+      top: 120px;
+      left: 511px;
+    }
+    &:nth-child(4) {
+      top: 359px;
+      left: 524px;
+    } 
+    &:nth-child(5) {
+      top: -90px;
+      left: 320px;
+    }
+  }
+  & .naruto {
+    @include box(417px, 507px);
+    @include patl(26px, 93px);
+    animation: flame 3s 5s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 1px $orange)
+      drop-shadow(0 0 3px $orange)
+      drop-shadow(0 0 6px $orange) 
+      drop-shadow(0 0 9px $yellow);
+    & .head {
+      @include box(155px, 214px);
+      @include patl(0, 194px);
+      & .hair {
+        @include box(116px, 52px);
+        @include patl(39px, 19px);
+        background: $yellow;
+        & .lock-1 {
+          @include box(18px, 25px);
+          @include pabl(4px, -18px);
+          overflow: hidden;
+
+          &::after {
+            @include pse(51px, 76px);
+            top: -70px;
+            left: -11px;
+            box-shadow: 9px 17px $yellow;
+            border-radius: 50%;
+          }
+        }
+        & .lock-2 {
+          @include box(10px, 42px);
+          @include patl(-19px, -3px);
+          background: $yellow;
+          border-radius: 0 10px;
+          clip-path: polygon(20% 0,
+            100% 0, 
+            100% 100%,
+            30% 100%,
+            0 50%);
+        }
+        & .lock-3,
+        & .lock-6 {
+          @include box(20px, 88px);
+          @include patl(-40px, 5px);
+          background: $yellow;
+          border-radius: 50%;
+          clip-path: polygon(
+            40% 15%,
+            49% 0,
+            200% 0,
+            100% 200%,
+            5% 200%,
+            5% 37%,
+            20% 26%
+          );
+          &::after {
+            @include pse(20px, 20px);
+            top: 35px;
+            left: 10px;
+            transform: rotate(-50deg);
+            background: $yellow;
+          }
+        }
+        & .lock-4 {
+          @include box(41px, 59px);
+          @include patl(-30px, 30px);
+          background: $yellow;
+          border-radius: 50%;
+          clip-path: polygon(
+            0 0,
+            22% 0%,
+            29% 20%,
+            49% 43%,
+            65% 17%,
+            73% 0,
+            100% 0,
+            100% 100%,
+            0 100%
+          );
+        }
+        & .lock-5 {
+          @include box(30px, 59px);
+          @include patl(-26px, 70px);
+          background: $yellow;
+          border-radius: 0 20px;
+          clip-path: polygon(
+            43% 0,
+            100% 0,
+            100% 100%,
+            0 100%,
+            0 46%,
+            33% 36%,
+            43% 15%
+          );
+        }
+        & .lock-6 {
+          top: -35px;
+          left: 103px;
+          transform: scalex(-1);
+          &::after {
+          }
+        }
+        & .lock-7 {
+          @include box(18px, 40px);
+          @include pabr(4px, -18px);
+          &::before {
+            @include pse(10px, 40px);
+            top: -26px;
+            left: -4px;
+            transform: rotate(15deg) skewy(20deg);
+            background: $yellow;
+            border-radius: 0 20px / 0 40px;
+          }
+          &::after {
+            @include pse(61px, 66px);
+            top: -45px;
+            right: 7px;
+            box-shadow: 5px 20px $yellow;
+            border-radius: 50%;
+          }
+        }
+        & .lock-8 {
+          @include box(11px, 15px);
+          @include pabl(-85px, -2px);
+          overflow: hidden;
+          z-index: -1;
+          &::after {
+            @include pse(11px, 30px);
+            bottom: 0;
+            right: 8px;
+            border-radius: 50%;
+            box-shadow: 6px -1px $orange;
+          }
+        }
+        & .lock-9 {
+          @include pse(8px, 32px);
+          @include pabl(-100px, 6px);
+          background: $orange;
+          clip-path: polygon(0 0, 0 34%, 40% 100%, 95% 51%, 100% 0%);
+          z-index: -1;
+        }
+        & .lock-10 {
+          @include pse(17px, 61px);
+          @include pabr(-100px, 7px);
+          background: $orange;
+          border-radius: 50%;
+          clip-path: polygon(
+            0 0,
+            11% 100%,
+            46% 100%,
+            45% 81%,
+            60% 69%,
+            97% 94%,
+            100% 0%
+          );
+          z-index: -1;
+        }
+      }
+      & .face {
+        @include box(103px, 172px);
+        @include pabl(0, 24px);
+        background: $skin;
+        border-radius: 50%;
+        & .ear {
+          @include box(15px, 39px);
+          @include patr(83px, -12px);
+          background: $skin;
+          border-radius: 50%;
+          transform: rotate(17deg);
+          &.left {
+            left: -12px;
+            transform: rotate(-17deg);
+          }
+        }
+        & .temple {
+          @include box(10px, 23px);
+          @include patr(80px, -6px);
+          background: $yellow;
+          clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 40%,
+            60% 100%,
+            40% 100%,
+            10% 60%
+          );
+          &.left {
+            left: -5px;
+            transform: scalex(-1);
+          }
+        }
+      }
+      & .line-container {
+        @include box(100%, 100%);
+        position: absolute;
+        border-radius: 50%;
+        overflow: hidden;
+        &::after {
+          @include pse(55px, 76px);
+          background: $skin;
+          top: 90px;
+          left: 24px;
+          border-radius: 50%;
+        }
+        & .line {
+          @include box(27px, 8px);
+          @include patr(123px, 0);
+          background: $black;
+          border-radius: 0 0 3px 3px;
+          overflow: hidden;
+          &::after {
+            @include pse(33px, 6px);
+            top: -4px;
+            left: -4px;
+            border-radius: 50%;
+            background: $skin;
+          }
+        }
+        & .line:nth-child(1) {
+          left: 0px;
+        }
+        & .line:nth-child(2) {
+          left: 0;
+          top: 131px;
+        }
+        & .line:nth-child(3) {
+          left: 0px;
+          top: 139px;
+        }
+        & .line:nth-child(4) {
+          right: 0;
+          top: 131px;
+        }
+        & .line:nth-child(5) {
+          right: 0px;
+          top: 139px;
+        }
+      }
+      & .band-container {
+        @include box(120px, 47px);
+        @include patl(82px, 17px);
+        overflow: hidden;
+
+        & .band {
+          @include box(120px, 176px);
+          @include patl(-63px, 0);
+          overflow: hidden;
+          border-radius: 50%;
+          z-index: 0;
+          & .logo {
+            @include box(74px, 34px);
+            @include patl(68px, 24px);
+            border: 1px solid $border;
+            border-radius: 50% / 16%;
+            & .dot {
+              @include box(4px, 4px);
+              @include patr(3px, 2px);
+              border: 1px solid $border;
+              border-radius: 50%;
+            }
+
+            & .dot.left {
+              left: 2px;
+            }
+
+            & .dot:nth-child(2),
+            & .dot:nth-child(5) {
+              top: 13px;
+            }
+
+            & .dot:nth-child(3),
+            & .dot:nth-child(6) {
+              top: 22px;
+            }
+
+            & .leaf-container {
+              filter: drop-shadow(0 0 2px $border);
+              & .leaf {
+                @include box(28px, 19px);
+                @include patl(5px, 22px);
+                background: $yellow;
+                border-radius: 28px 0 28px 0;
+                clip-path: polygon(
+                  0 0,
+                  0 100%,
+                  32% 100%,
+                  31.75% 85.19%,
+                  21% 84%,
+                  14% 73%,
+                  18% 50%,
+                  26% 70%,
+                  32% 86%,
+                  32% 100%,
+                  50% 100%,
+                  78% 83%,
+                  79% 51%,
+                  61% 26%,
+                  47% 33%,
+                  46% 47%,
+                  47% 59%,
+                  60% 65%,
+                  56% 43%,
+                  69% 46.68%,
+                  70% 73%,
+                  57% 80%,
+                  42% 76%,
+                  28% 60%,
+                  26% 39%,
+                  42% 22%,
+                  57% 15%,
+                  71% 16%,
+                  86% 26%,
+                  100% 21%,
+                  100% 0,
+                  86% 10%,
+                  72% 0
+                );
+              }
+            }
+          }
+          &::after {
+            @include pse(188px, 47px);
+            top: 62px;
+            left: -31px;
+            border-radius: 50%;
+            background: linear-gradient(
+              90deg,
+              $orange 10%,
+              $yellow 35% 65%,
+              $orange 90%
+            );
+            z-index: -1;
+          }
+        }
+      }
+      & .eye {
+        @include box(25px, 17px);
+        @include patr(90px, 13px);
+        border-radius: 51% 50% 49% 52% / 75% 20% 80% 22%;
+        background: #fff;
+        overflow: hidden;
+
+        &::after {
+          @include pse(100%, 100%);
+          background: $skin;
+          border-radius: 51% 50% 49% 52% / 75% 20% 80% 22%;
+          border-bottom: 2px solid black;
+          animation: blink 6s infinite linear;
+        }
+        animation: blink2 6s infinite linear;
+        & .iris {
+          @include box(15px, 15px);
+          @include patl(-1px, 5px);
+          border-radius: 50%;
+          background: radial-gradient($yellow 20%, $orange 100%);
+          border: 1px solid #0006;
+          opacity: 0.8;
+          &::after {
+            @include pse(1px, 7px);
+            top: 3px;
+            left: 6px;
+            background: $black;
+          }
+          &::before {
+            @include pse(7px, 2px);
+            top: 5px;
+            left: 3px;
+            background: $black;
+          }
+        }
+
+        &.left {
+          transform: scalex(-1);
+          left: 13px;
+        }
+      }
+      & .nouse {
+        @include box(15px, 13px);
+        @include patl(123px, 45px);
+        border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+        background: #3331;
+        &::after,
+        &::before {
+          @include pse(4px, 4px);
+          border-radius: 50%;
+          background: #3331;
+          top: 7px;
+          right: 2px;
+        }
+        &::before {
+          left: 2px;
+        }
+      }
+      & .mouth {
+        @include box(30px, 14px);
+        @include patl(140px, 37px);
+        border-radius: 19% 19% 15% 15% / 70% 70% 30% 30%;
+        border: 1px solid $skin-shadow;
+        background: #fff;
+        overflow: hidden;
+        &::before {
+          @include pse(150%, 100%);
+          border-radius: 50%;
+          border: 1px dotted $skin-shadow;
+          top: -5px;
+          left: -8px;
+        }
+        &::after {
+          @include pse(12px, 5px);
+          background: #fff;
+          top: 3px;
+          left: 8px;
+        }
+        animation: close 13s linear forwards;
+      }
+    }
+    & .neck {
+      @include box(70px, 39px);
+      @include patl(172px, 225px);
+      background: $skin-shadow;
+      border-radius: 0% 0% 24% 76% / 0% 0% 19% 55%;
+      z-index: -1;
+    }
+    & .collar {
+      @include box(176px, 97px);
+      @include patl(155px, 173px);
+      z-index: -2;
+      & .left {
+        @include box(28px, 82px);
+        @include patl(0, 0);
+        background: linear-gradient(270deg, $orange 2%, $yellow 45%);
+        border-radius: 100% 0% 0% 100% / 25% 0% 0% 75%;
+        clip-path: polygon(
+          0 3%,
+          0% 98%,
+          100% 100%,
+          100% 100%,
+          90% 73%,
+          90% 29%,
+          100% 0
+        );
+      }
+      & .right {
+        @include box(60px, 82px);
+        @include pabr(0, 0);
+        background: $gray;
+        border-radius: 96% 4% 0% 100% / 34% 3% 0% 0%;
+        clip-path: polygon(0 100%, 55% 100%, 77% 63%, 88% 37%, 100% 0, 0 0);
+        &::after {
+          @include pse(102px, 166px);
+          background: $black;
+          border-radius: 50%;
+          top: -56px;
+          left: -88px;
+        }
+      }
+      & .back {
+        @include box(110px, 79px);
+        @include patl(13px, 19px);
+        overflow: hidden;
+        &::after {
+          @include pse(335px, 177px);
+          border-radius: 50%;
+          top: -171px;
+          left: -109px;
+          box-shadow: 0 79px $black;
+        }
+      }
+      & .front {
+        @include box(104px, 48px);
+        @include pabl(0, 17px);
+        border-radius: 0 0 30px 0;
+        background: $gray;
+        box-shadow: -3px 27px $black;
+        overflow: hidden;
+        &::after {
+          @include pse(99px, 87px);
+          background: $black;
+          border-radius: 50%;
+          top: -56px;
+          left: 24px;
+        }
+        &::before {
+          @include pse(30px, 30px);
+          background: $gray;
+          border-radius: 50%;
+          bottom: 4px;
+          left: 1px;
+          box-shadow: -5px -27px $black;
+        }
+      }
+    }
+    & .body {
+      @include box(423px, 293px);
+      @include pabl(0, 0);
+      & .chest {
+        @include box(174px, 256px);
+        @include pabl(0, 173px);
+        border-radius: 0 29px 0 0;
+        background: $gray;
+        &::after {
+          @include pse(20px, 22px);
+          background: $gray;
+          left: 98px;
+          top: -18px;
+          transform: rotate(-8deg);
+          border-radius: 20px 0 25px 0;
+        }
+
+        & .seed {
+          @include box(17px, 17px);
+          @include patl(20px, 70px);
+          border: 5px solid $yellow;
+          border-radius: 50%;
+          &::after {
+            @include pse(7px, 12px);
+            top: 6px;
+            left: 4px;
+            background: $yellow;
+            border-radius: 5px 0 12px 0;
+            clip-path: polygon(14% 48%, 0 100%, 
+              71% 50%, 100% 10%);
+          }
+        }
+        & .seed:nth-child(1) {
+          top: 6px;
+          left: 30px;
+        }
+        & .seed:nth-child(3) {
+          top: 25px;
+          left: 118px;
+        }
+        & .circle {
+          @include box(90px, 90px);
+          @include pabl(20px, 44px);
+          border: 13px solid $yellow;
+          border-radius: 50%;
+        }
+      }
+      & .jacket:nth-child(1) {
+        @include box(116px, 272px);
+        @include pabr(0, -4px);
+        clip-path: polygon(
+          0 0,
+          0 68%,
+          15% 68%,
+          32% 100%,
+          100% 100%,
+          91% 79%,
+          76% 60%,
+          75% 52%,
+          71% 45%,
+          71% 0
+        );
+        z-index: 1;
+        & .left {
+          @include box(18px, 184px);
+          @include patl(0, 0);
+          overflow: hidden;
+          &::after {
+            @include pse(138px, 289px);
+            top: -51px;
+            left: 1px;
+            border-radius: 50%;
+            background: 
+              linear-gradient(104deg, 
+                $orange 5%, 
+                transparent 19%),
+              linear-gradient(85deg, 
+                $orange 4%, 
+                $yellow 16%);
+          }
+        }
+        & .right {
+          @include box(65px, 122px);
+          @include patl(0, 18px);
+          overflow: hidden;
+          &::after {
+            @include pse(15px, 25px);
+            right: 2px;
+            bottom: -6px;
+            background: $yellow;
+            transform: rotate(-5deg);
+            border-radius: 50%;
+          }
+          &::before {
+            @include pse(10px, 20px);
+            right: 26px;
+            top: 54px;
+            background: $black;
+            transform: skewx(5deg);
+            z-index: 6;
+          }
+          & .shouder {
+            @include box(137px, 200px);
+            @include patl(-1px, -80px);
+            border-radius: 50%;
+            background: $yellow;
+            overflow: hidden;
+            &::after {
+              @include pse(33px, 79px);
+              right: -10px;
+              top: 25px;
+              transform: rotate(-5deg);
+              border-radius: 50%;
+              border: 12px solid $black;
+            }
+            &::before {
+              @include pse(16px, 48px);
+              right: -8px;
+              top: 39px;
+              background: $black;
+              border-radius: 50%;
+            }
+          }
+        }
+        & .bottom {
+          @include box(100px, 150px);
+          @include pabr(0, 0);
+          background: linear-gradient(70deg,
+            $orange 15%, 
+            $yellow 30%);
+          &::after{
+            @include pse(1px,140px);
+            top:-50px;
+            left: 10px;
+            box-shadow: 0 0 6px 1px $orange;
+            z-index: 5;
+            transform: rotate(-5deg);
+            background: $border;
+          }
+          &::before{
+            @include pse(1px,70px);
+            top:-10px;
+            left: 20px;
+            box-shadow: 0 0 6px 1px $orange;
+            transform: rotate(5deg);
+            background: $border;
+          }
+        }
+      }
+      & .jacket:nth-child(2) {
+        @include box(212px, 292px);
+        @include pabl(0, 0);
+        & .right {
+          @include box(53px, 281px);
+          @include pabr(0, 0);
+          border-radius: 50px 0 0 0;
+          z-index: 2;
+          overflow: hidden;
+          &::after {
+            @include pse(134px, 380px);
+            top: -75px;
+            right: 0;
+            border-radius: 50%;
+            background: 
+              radial-gradient($yellow 60%, 
+                $orange 75%);
+          }          
+        }
+        & .left{
+          @include box(69px, 215px);
+          @include pabl(0, 90px);
+          overflow: hidden;
+          &::after{
+            @include pse(164px, 294px);
+            top: -69px;
+            left: -107px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px $orange,
+              100px 60px $yellow;
+          }
+        }
+        & .shoulder{
+          @include box(88px, 87px);
+          @include patl(3px, 100px);
+          background: $yellow;
+          z-index: 2;
+          border-radius: 90px 11px 0 0;
+          overflow: hidden;
+          &::before{
+            @include pse(69px, 75px);
+            border-radius: 50%;
+            left: -24px;
+            background: 
+              radial-gradient($black 38%, 
+                $yellow 40% 50%,
+                $black 53%);           
+          }
+          &::after{
+            @include pse(10px, 20px);
+            left: 40px;
+            top: 40px;
+            background: $black;
+            transform: rotate(30deg) skewx(15deg);
+          }
+        }
+        & .arm{
+          @include box(145px, 133px);
+          @include pabl(95px, 40px);
+          Z-index:2;
+          & .top{
+            @include box(72px, 103px);
+            @include patl(13px, 50px);
+            border-radius: 0 0 50px 0;
+            overflow: hidden;
+            box-shadow: 18px 2px 10px -16px $orange;
+            &::after{
+              @include pse(87px,107px);
+              border-radius:50%;
+              left: 0;
+              top:-18px;
+              background: $yellow;
+              z-index: -1;
+            }
+            &::before{
+              @include pse(60px,64px);
+              left: 0;
+              top: 40px;
+              background: $yellow;
+            }
+          }
+          & .bottom{
+            @include box(90px, 86px);
+            @include pabl(-30px, 0px);
+            border-radius:50%;
+            background: $yellow;
+            box-shadow: 
+              12px -32px 0 -18px $yellow, 
+              -23px 3px 0 -18px $yellow,
+              20px -5px 10px -20px $orange;
+            &::after{
+              @include pse(36px,86px);
+              left: 45px;
+              top: -50px;
+              transform:rotate(-8deg);
+              background: $yellow;
+              border-radius:50%;
+              z-index:-1;
+            }
+            &::before{
+              @include pse(20px,50px);
+              right: -10px;
+              top: 0;
+              transform:rotate(30deg);
+              background: $yellow;
+              z-index:-1;
+            }
+            & .sleeve{
+              @include box(116px, 106px);
+              @include patr(30px, 0);
+              background: $black;
+              clip-path:
+                polygon(
+                  7% 18%, 7% 28%,
+                  1% 36%, 6% 37%,
+                  0 48%, 6% 50%, 
+                  14% 70%, 15% 85%,
+                  23% 76%, 47% 96%,
+                  44% 83%, 73% 78%, 
+                  93% 61%, 90% 55%,
+                  93% 47%, 87% 32%, 
+                  86% 18%, 74% 25%,
+                  55% 22%, 49% 7%, 
+                  38% 14%, 34% 2%,
+                  27% 14%);
+            }
+            & .glove{
+              @include box(106px, 40px);
+              @include patl(60px, -50px);
+              transform:rotate(20deg);
+              &::after{
+                @include pse(67px,37px);
+                right: 5px;
+                top: 1px;
+                background: $gray;
+                border-radius: 50%;
+              }
+              &::before{
+                @include pse(50px,40px);
+                right: 0;
+                background: $gray;
+                border-radius: 50%;
+                box-shadow: -35px 0 $gray;
+              }
+              & .thumb{
+                @include box(33px, 30px);
+                @include patl(6px, 3px);
+                &::before{
+                  @include pse(100%,100%);
+                  background: $gray;
+                  clip-path:
+                    polygon(
+                      20% 21%, 
+                      20% 63%, 
+                      100% 83%, 
+                      100% 3%);
+                }
+                &::after{
+                  @include pse(14px,20px);
+                  background: $gray;
+                  border-radius: 50%;
+                  transform:rotate(20deg);
+                  top: 2px;
+                  left: 5px
+                }
+              }
+            }
+            & .hand{
+              & .palm{
+                @include box(72px, 36px);
+                @include patl(74px, -20px);
+                background: $skin;
+                transform: rotate(10deg);
+                border-radius: 17% 83% 24% 59% 
+                  / 37% 79% 21% 63% ;
+              &::before{
+                @include pse(50px, 35px);
+                background: $skin;
+                right: 0;
+                top: 5px;
+                border-radius: 0 40px 10px ;
+                 transform: rotate(-10deg);
+              }
+              & .line{
+                  @include box(34px, 12px);
+                  @include patl(20px, 22px);
+                  border-radius: 50%;
+                  box-shadow: 0 -1px $border;
+                  transform: rotate(20deg);
+              }
+            }
+              & .thumb{
+                @include box(16px, 24px);
+                @include pabl(17px, -43px);
+                background: $skin;
+                border-radius: 8px;
+                transform:rotate(5deg);
+                &::after{
+                  @include pse(16px,20px);
+                  background: $skin;
+                  top: -8px;
+                  left: -2px;
+                  transform: rotate(-20deg);
+                  border-radius: 5px 8px 8px 0;
+                }
+              }
+              & .index{
+                @include box(14px, 26px);
+                @include pabl(-15px, -14px);
+                background: $skin;
+                border-radius: 7px;
+                transform:rotate(20deg);
+                box-shadow: -1px -5px $border,
+                  1px -1px $border;
+                &::before{
+                  @include pse(14px,20px);
+                  background: $skin;
+                  top: -8px;
+                  left: 0;
+                  transform: rotate(-10deg);
+                  border-radius: 5px 7px 7px 0;
+                  box-shadow: -1px -1px $border,
+                    1px -1px $border;
+                }
+                &::after{
+                  @include pse(10px, 9px);
+                  border-radius: 49% 51% 10% 10% 
+                    / 17% 16% 10% 83%;
+                  top: -5px;
+                  left: 1px;
+                  border:1px solid $border;
+                  
+                }
+              }
+              & .middle{
+                @include box(14px, 30px);
+                @include pabl(-28px, 6px);
+                background: $skin;
+                border-radius: 7px;
+                transform:rotate(20deg);
+                box-shadow: -1px -5px $border,
+                  1px -1px $border;
+                &::before{
+                  @include pse(14px,20px);
+                  background: $skin;
+                  top: -8px;
+                  left: -1;
+                  transform: rotate(5deg);
+                  border-radius: 5px 7px 7px 0;
+                  box-shadow: -1px -1px $border,
+                    1px -1px $border;
+                }
+                &::after{
+                  @include pse(10px, 9px);
+                  border-radius: 49% 51% 10% 10% 
+                    / 17% 16% 10% 83%;
+                  top: -5px;
+                  left: 1px;
+                  border:1px solid $border;
+                  
+                }
+              }
+              & .ring{
+                @include box(12px, 27px);
+                @include pabl(-30px, 28px);
+                background: $skin;
+                border-radius: 6px;
+                box-shadow: -1px -5px $border,
+                  1px -1px $border;
+                transform: rotate(65deg);
+                &::before{
+                  @include pse(12px,24px);
+                  background: $skin;
+                  top: -8px;
+                  left: -2px;
+                  transform: rotate(-30deg);
+                  border-radius: 5px 6px 6px 0;
+                  box-shadow: -1px -1px $border,
+                    1px -1px $border;
+                }
+                &::after{
+                  @include pse(9px, 9px);
+                  border-radius: 49% 51% 10% 20%
+                    / 39% 16% 10% 83% ;
+                  top: -6px;
+                  left: -2px;
+                  border:1px solid $border;
+                  transform: rotate(-30deg);
+                }
+              }
+              & .little{
+                @include box(10px, 23px);
+                @include pabl(-33px, 50px);
+                background: $skin;
+                border-radius: 5px;
+                box-shadow: -1px -5px $border,
+                  1px -1px $border;
+                transform: rotate(75deg);
+                &::before{
+                  @include pse(10px,24px);
+                  background: $skin;
+                  top: -8px;
+                  left: -2px;
+                  transform: rotate(-35deg);
+                  border-radius: 5px 5px 5px 0;
+                  box-shadow: -1px -1px $border,
+                    1px -1px $border;
+                }
+                &::after{
+                  @include pse(8px, 8px);
+                  border-radius: 49% 51% 10% 20%
+                    / 39% 16% 10% 83% ;
+                  top: -6px;
+                  left: -2px;
+                  border:1px solid $border;
+                  transform: rotate(-35deg);
+                }
+              }
+            }
+            
+          }
+        }
+      }
+    }
+  }
+  & .rasengan{
+    @include box(200px, 200px);
+    @include patl(270px, 80px);
+    border-radius: 50%;
+    background: 
+      radial-gradient(white 3%, $blue 36% 40%,
+        transparent 43% 59%, rgba($blue,.3) 60%,
+        transparent 70%);
+     animation: rasengan-create 3s 7s linear forwards, 
+      rasengan-brightness 4s linear infinite alternate,
+       rasengan-fly 2s 10s linear infinite alternate;
+    transform: scale(0);
+    z-index:4;
+  }
+}
+
+//mobile size 
+@media screen and (max-width: 700px){
+  .container{
+    transform: scale(.5);
+    transform-origin: bottom;
+  }
+}
+//animations
+@keyframes fly {
+  from {
+    transform: translatey(-8%);
+  }
+  to {
+    transform: translatey(8%);
+  }
+}
+@keyframes blink {
+  0%,
+  60%,
+  64%,
+  100% {
+    transform: translatey(-100%);
+  }
+  61% {
+    transform: translatey(0%);
+  }
+}
+@keyframes blink2 {
+  0%,
+  60%,
+  64%,
+  100% {
+    box-shadow: 2px -2px $black;
+  }
+  62% {
+    box-shadow: none;
+  }
+}
+@keyframes close {
+  0%,
+  50% {
+    transform: scalex(0.5) scaley(0.05);
+  }
+  55%{
+     transform: scalex(0.8) scaley(0.7);
+  }
+  80%,
+  100% {
+    transform: scalex(1) scaley(1);
+  }
+}
+@keyframes flame {
+  to {
+    filter: drop-shadow(0 0 9px $orange)
+      drop-shadow(0 0 18px $orange)
+      drop-shadow(0 0 27px $orange) 
+      drop-shadow(0 0 36px $yellow);
+  }
+}
+@keyframes rasengan-create{
+  to{
+    transform: scale(1);
+  }
+}
+@keyframes rasengan-brightness{
+  0%,100%{
+    background: 
+      radial-gradient(white 3%, $blue 36% 40%,
+        transparent 43% 59%, rgba($blue,.3) 60%,
+        transparent 70%);
+  }
+  25%, 75%{
+    background: 
+      radial-gradient(white 3%, $blue 36% 40%,
+        transparent 43% 59%, rgba($blue,.2) 60%,
+        transparent 70%);
+  }
+  45%, 55%{
+    background: 
+      radial-gradient(white 3%, $blue 36% 40%,
+        transparent 43% 59%, rgba($blue,.1) 60%,
+        transparent 70%);
+  }
+  50%{
+    background: 
+      radial-gradient(white 3%, $blue 36% 40%,
+        transparent 43% 59%, rgba($blue,.0) 60%,
+        transparent 70%);
+  }
+}
+@keyframes rasengan-fly {
+  from {
+    transform: translatey(0%);
+  }
+  to {
+    transform: translatey(4%);
+  }
+}
